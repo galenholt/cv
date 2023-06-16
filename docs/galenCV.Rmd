@@ -1,0 +1,83 @@
+---
+name: Galen Holt
+# surname: Holt
+position: "Research Fellow"
+# pronouns: he/him # this worked on my website repo
+address: "Centre for Regional and Rural Futures, Deakin University"
+phone: +61 4 8859 2586
+www: galenholt.github.io
+email: "g.holt@deakin.edu.au"
+github: galenholt
+date: "`r format(Sys.time(), '%B %Y')`"
+headcolor: "000000"
+output: vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tibble)
+```
+
+# Research interests
+
+-   Freshwater community ecology at multiple spatial and temporal scales
+-   Community response to environmental change
+-   Aquatic species conservation and management
+-   Multiscale ecological processes
+-   Species coexistence and biodiversity maintenance
+-   Spatial and temporal environmental variation
+-   Dispersal
+-   Trophic dynamics
+
+# Positions
+
+```{r}
+tribble(
+  ~startdate, ~enddate, ~Title, ~Organisation,
+  2021, "Present", "Research Fellow", "Deakin University Centre for Regional And Rural Futures",
+  2020, "Present", "Visiting Scientist", "CSIRO",
+  2018, "2020", "Associate Research Fellow", "Deakin University CeRRF",
+  2015, "2018", "Postdoctoral Scholar", "University of Arizona Ecology and Evolutionary Biology",
+  2017, "2018", "Postdoctoral Scholar", "University of Wisconsin Center for Limnology"
+) %>%
+  detailed_entries(
+    when = glue::glue("{as.character(startdate)} -- {as.character(enddate)}"),
+    what = glue::glue("{Title} - {Organisation}")
+  )
+```
+
+# Education
+
+```{r}
+tribble(
+  ~ Degree, ~ Year, ~ Institution,
+  "PhD", "2014", "University of Arizona",
+  "BA, Honors", "2004", "Williams College") %>%
+  detailed_entries(Degree, Year, Institution)
+```
+
+# Publications
+
+## In prep and review
+
+```{r}
+# library(dplyr)
+# knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+
+bibliography_entries("CV/In prepreview.bib")
+```
+
+## Peer-reviewed publications
+
+```{r}
+bibliography_entries("CV/My papers.bib") %>%
+  arrange(desc(author$family), issued)
+```
+
+## Non-peer-reviewed publications
+
+```{r}
+bibliography_entries("CV/My reports.bib") %>%
+  arrange(desc(author$family), issued)
+```
